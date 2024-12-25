@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { fetchTopHeadlines } from '../services/newsService';
-import { Container, Typography, Box } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { fetchTopHeadlines } from "../services/newsService";
+import { Container, Typography, Box } from "@mui/material";
+import NewsCard from "../components/NewsCard";
 
 function HomePage() {
   const [news, setNews] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const loadNews = async () => {
@@ -18,19 +20,46 @@ function HomePage() {
     loadNews();
   }, []);
 
+  const toggleFavorite = (article) => {
+    setFavorites((prevFavorites) => {
+      const isAlreadyFavorite = prevFavorites.some((fav) => fav.title === article.title);
+      if (isAlreadyFavorite) {
+        return prevFavorites.filter((fav) => fav.title !== article.title);
+      } else {
+        return [...prevFavorites, article];
+      }
+    });
+  };
+
+  const validNews = news.filter(
+    (article) => article.title && article.urlToImage && article.description
+  );
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>Top News</Typography>
+      <Typography variant="h4" gutterBottom>
+        Top News
+      </Typography>
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
+          display: "flex",
+          flexWrap: "wrap",
           gap: 2,
-          justifyContent: 'space-between',
+          justifyContent: "space-between",
         }}
       >
-             </Box>
+        {validNews.map((article, index) => (
+          <NewsCard
+            key={index}
+            title={article.title}
+            description={article.description}
+            imageUrl={article.urlToImage}
+            url={article.url}
+            onFavoriteToggle={() => toggleFavorite(article)}
+            isFavorite={favorites.some((fav) => fav.title === article.title)}
+          />
+        ))}
+      </Box>
     </Container>
   );
 }
