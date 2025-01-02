@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import HomePage from "./pages/HomePage";
-import { CATEGORIES } from "./constants"; 
+import CategoryPage from "./pages/CategoryPage"; // Import CategoryPage
+import { CATEGORIES } from "./constants";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
               News App
             </Link>
           </Typography>
@@ -24,10 +25,15 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/category/:category" />
+        <Route path="/category/:category" element={<CategoryPageWrapper />} />
       </Routes>
     </Router>
   );
 }
+
+const CategoryPageWrapper = () => {
+  const { category } = useParams();
+  return <CategoryPage category={category} />;
+};
 
 export default App;
