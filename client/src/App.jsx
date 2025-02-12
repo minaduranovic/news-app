@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import HomePage from "./pages/HomePage";
-import CategoryPage from "./pages/CategoryPage"; // Import CategoryPage
+import CategoryPage from "./pages/CategoryPage"; 
 import { CATEGORIES } from "./constants";
 
 function App() {

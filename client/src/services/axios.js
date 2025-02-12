@@ -7,8 +7,8 @@ const newsApi = axios.create({
   }
 });
 
-const jsonServer = axios.create({
-  baseURL: 'http://localhost:3000/',
+const backendApi = axios.create({
+  baseURL: 'http://localhost:5261/api/', 
 });
 
-export { newsApi, jsonServer };
+export { newsApi, backendApi }
