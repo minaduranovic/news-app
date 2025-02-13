@@ -22,16 +22,6 @@ function CategoryPage({ category }) {
     }
   }, [category]);
 
-  const toggleFavorite = (article) => {
-    setFavorites((prevFavorites) => {
-      const isAlreadyFavorite = prevFavorites.some((fav) => fav.title === article.title);
-      if (isAlreadyFavorite) {
-        return prevFavorites.filter((fav) => fav.title !== article.title);
-      } else {
-        return [...prevFavorites, article];
-      }
-    });
-  };
 
   const validNews = news.filter(
     (article) => article.title && article.urlToImage && article.description

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-r
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import HomePage from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage"; 
+import FavoritesPage from "./pages/FavoritesPage"; 
 import { CATEGORIES } from "./constants";
 
 function App() {
@@ -20,12 +21,16 @@ function App() {
               {category}
             </Button>
           ))}
+          <Button color="inherit" component={Link} to="/favorites">
+            Favorites
+          </Button>
         </Toolbar>
       </AppBar>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/category/:category" element={<CategoryPageWrapper />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </Router>
   );

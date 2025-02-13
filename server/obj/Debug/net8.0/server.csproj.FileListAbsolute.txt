@@ -32,5 +32,4 @@
 /Users/mina/Desktop/learning/react-learning/news-app/server/obj/Debug/net8.0/server.pdb
 /Users/mina/Desktop/learning/react-learning/news-app/server/obj/Debug/net8.0/server.genruntimeconfig.cache
 /Users/mina/Desktop/learning/react-learning/news-app/server/obj/Debug/net8.0/ref/server.dll
-/Users/mina/Desktop/learning/react-learning/news-app/server/bin/Debug/net8.0/Data/favorites.json
 /Users/mina/Desktop/learning/react-learning/news-app/server/bin/Debug/net8.0/favorites.json
